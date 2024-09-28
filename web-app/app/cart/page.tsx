@@ -14,5 +14,5 @@ export default async function CartPage() {
     cart = await getCart(cartId);
   }
 
-  return <CartContent cart={cart} />;
+  return <CartContent initialCart={cart} />;
 }

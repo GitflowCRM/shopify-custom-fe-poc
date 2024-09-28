@@ -79,6 +79,7 @@ export async function fetchProducts(limit = 10): Promise<Product[]> {
 export interface CartItem {
   id: string;
   quantity: number;
+  checkoutUrl: string;
   merchandise: {
     id: string;
     title: string;

@@ -5,13 +5,11 @@ import { cookies } from 'next/headers';
 async function validateAndGetCart(cartId: string) {
   try {
     const cart = await getCart(cartId);
-    if (cart && cart.id) {
-      return cart;
-    }
+    return cart;
   } catch (error) {
     console.error('Error validating cart:', error);
+    return null;
   }
-  return null;
 }
 
 export async function POST(request: NextRequest) {
@@ -26,14 +24,12 @@ export async function POST(request: NextRequest) {
     if (cartId) {
       cart = await validateAndGetCart(cartId);
       if (!cart) {
-        // If the cart is invalid or empty, create a new one
         const newCart = await createCart();
         cartId = newCart.id;
         cookieStore.set('cartId', cartId, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
         cart = newCart;
       }
     } else {
-      // If there's no cartId, create a new cart
       const newCart = await createCart();
       cartId = newCart.id;
       cookieStore.set('cartId', cartId, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
@@ -42,35 +38,34 @@ export async function POST(request: NextRequest) {
 
     let updatedCart;
 
-    if (action === 'add') {
-      const variantId = formData.get('variantId') as string;
-      updatedCart = await addToCart(cartId, variantId, 1);
-    } else {
-      const lineId = formData.get('lineId') as string;
-
-      switch (action) {
-        case 'increase':
-          updatedCart = await updateCartItem(cartId, lineId, cart.lines.edges.find(edge => edge.node.id === lineId)?.node?.quantity ?? 0 + 1);
-          break;
-        case 'decrease':
-          const currentQuantity = cart.lines.edges.find(edge => edge.node.id === lineId)?.node?.quantity ?? 0;
-          if (currentQuantity > 1) {
-            updatedCart = await updateCartItem(cartId, lineId, currentQuantity - 1);
-          } else {
-            updatedCart = await removeCartItem(cartId, lineId);
-          }
-          break;
-        case 'remove':
-          updatedCart = await removeCartItem(cartId, lineId);
-          break;
-        default:
-          return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
-      }
+    switch (action) {
+      case 'add':
+        const variantId = formData.get('variantId') as string;
+        updatedCart = await addToCart(cartId, variantId, 1);
+        break;
+      case 'increase':
+        const increaseLineId = formData.get('lineId') as string;
+        const currentQuantity = cart.lines.edges.find(edge => edge.node.id === increaseLineId)?.node.quantity || 0;
+        updatedCart = await updateCartItem(cartId, increaseLineId, currentQuantity + 1);
+        break;
+      case 'decrease':
+        const decreaseLineId = formData.get('lineId') as string;
+        const decreaseQuantity = cart.lines.edges.find(edge => edge.node.id === decreaseLineId)?.node.quantity || 0;
+        if (decreaseQuantity > 1) {
+          updatedCart = await updateCartItem(cartId, decreaseLineId, decreaseQuantity - 1);
+        } else {
+          updatedCart = await removeCartItem(cartId, decreaseLineId);
+        }
+        break;
+      case 'remove':
+        const removeLineId = formData.get('lineId') as string;
+        updatedCart = await removeCartItem(cartId, removeLineId);
+        break;
+      default:
+        return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
 
-    // Check if the cart is empty after the operation
     if (!updatedCart || updatedCart.lines.edges.length === 0) {
-      // If the cart is empty, create a new one
       const newCart = await createCart();
       cookieStore.set('cartId', newCart.id, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
       updatedCart = newCart;
@@ -92,10 +87,9 @@ export async function GET() {
   }
 
   try {
-    const cart = await validateAndGetCart(cartId);
+    const cart = await getCart(cartId);
     
     if (!cart) {
-      // If the cart is invalid or empty, create a new one
       const newCart = await createCart();
       cookieStore.set('cartId', newCart.id, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
       return NextResponse.json({ cart: newCart });

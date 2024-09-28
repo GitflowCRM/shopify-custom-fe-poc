@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
   }
 
   const order = JSON.parse(body);
-  
+  console.log(order);
   // Process the order data as needed
   // You might want to store it in your database or trigger other actions
 
