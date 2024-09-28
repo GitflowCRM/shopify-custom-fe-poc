@@ -72,3 +72,14 @@ WEB-APP
 ├── postcss.config.js
 ├── tailwind.config.js
 └── tsconfig.json
+
+
+
+RULE 
+- whenever an object is accessed use optional chaining 
+- whenever a function is called use async await 
+- whenever a variable is used use let or const 
+- whenever a string is used use template literals 
+- whenever a number is used use the number 
+- whenever a boolean is used use the boolean 
+

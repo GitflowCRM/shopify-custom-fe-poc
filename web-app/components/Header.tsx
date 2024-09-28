@@ -1,19 +1,30 @@
 import Link from 'next/link';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { ShoppingCart } from 'lucide-react';
+import { getCart } from '@/lib/shopify';
+import { cookies } from 'next/headers';
 
-export default function Header() {
+export default async function Header() {
+  const cookieStore = cookies();
+  const cartId = cookieStore.get('cartId')?.value;
+  
+  let itemCount = 0;
+  if (cartId) {
+    const cart = await getCart(cartId);
+    itemCount = cart?.lines.edges.reduce((total, edge) => total + edge.node.quantity, 0) || 0;
+  }
+
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <header className="bg-white shadow-sm">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold">
-          Store Name
+          Shopify Store
         </Link>
-        <div className="flex items-center space-x-4">
-          <Input className="w-64" placeholder="Search" />
-          <Button variant="ghost">Sign In</Button>
-          <Button variant="ghost">Cart</Button>
-        </div>
+        <nav>
+          <Link href="/cart" className="flex items-center">
+            <ShoppingCart className="mr-2" />
+            Cart ({itemCount})
+          </Link>
+        </nav>
       </div>
     </header>
   );
