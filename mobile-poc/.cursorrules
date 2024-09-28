@@ -1,0 +1,85 @@
+Let’s work on this POC project.
+
+I want to create an Expo React Native application with Tamagui UI components. It should act as a custom front-end application using the Shopify Storefront API with GraphQL. We will start with a POC, featuring a home screen that displays standard content and lists all products.
+
+Tech Stack
+
+	•	Expo (React Native)
+	•	Tamagui (for UI components and styling)
+	•	Apollo Client (for GraphQL queries)
+	•	Shopify Storefront API
+	•	Shopify GraphQL Client, e.g.:
+    •   Navigation: react navigation
+
+    import { createStorefrontApiClient } from '@shopify/storefront-api-client';
+
+    Rendering
+
+	•	Push as many items as possible client-side.
+	•	Use useEffect for initial data fetching.
+	•	Use Apollo Client for GraphQL queries.
+
+Features
+
+Home Screen:
+
+	•	Standard content.
+	•	List of Products.
+	•	List of Collections.
+
+Folder Structure
+
+Expo-App
+│
+├── assets
+│   └── images
+│
+├── components
+│   ├── ui
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   └── Input.tsx
+│   ├── Header.tsx
+│   ├── Footer.tsx
+│   └── ProductList.tsx
+│
+├── graphql
+│   ├── queries
+│   │   └── getProducts.ts
+│   └── client.ts
+│
+├── navigation
+│   └── AppNavigator.tsx
+│
+├── screens
+│   ├── HomeScreen.tsx
+│   ├── ProductScreen.tsx
+│   └── CollectionScreen.tsx
+│
+├── styles
+│   └── tamagui.config.ts
+│
+├── App.tsx
+├── app.json
+├── babel.config.js
+├── package.json
+├── tailwind.config.js
+├── tsconfig.json
+└── .env
+
+
+Rules
+
+	•	Use optional chaining (?.) whenever accessing an object.
+	•	Use async/await for all function calls.
+	•	Use let or const for variable declarations.
+	•	Use template literals for all strings.
+	•	Use native number literals.
+	•	Use native boolean literals.
+
+
+Docs :
+Storefront API :
+https://shopify.dev/docs/api/storefront
+
+This rewritten version maintains the original instructions’ structure while tailoring them for an Expo React Native app using Tamagui.
