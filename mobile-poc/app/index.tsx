@@ -1,46 +1,33 @@
 import React from 'react'
 import { ApolloProvider } from '@apollo/client'
-import { H1, TamaguiProvider, Text, View } from 'tamagui'
-import { useFonts } from 'expo-font'
-import { NavigationContainer, useNavigation } from '@react-navigation/native'
+import { TamaguiProvider } from 'tamagui'
+import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-
-import client from '../graphql/client'
+import client from '@/graphql/client'
 import config from '@/styles/tamagui.config'
-import { Button } from 'react-native'
-import { Colors } from '@/constants/Colors'
+import HomeScreen from '@/screens/HomeScreen'
+import DetailsScreen from '@/screens/DetailsScreen'
 
-const HomeScreen = () => {
-  const navigation = useNavigation()
-  return (
-    <View style={{ flex: 1, backgroundColor: Colors.primary }}>
-      <H1>Heading 1</H1>
-      <Button
-        onPress={() => navigation.navigate('Details')}
-        title="Go to Details"
-      />
-    </View>
-  )
+type RootStackParamList = {
+  Home: undefined
+  Details: { productId: string }
 }
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
-export default function RootLayout() {
-  const [fontsLoaded] = useFonts({})
-
-  if (!fontsLoaded) {
-    return null // or a loading screen
-  }
-
+export default function App() {
   return (
     <ApolloProvider client={client}>
       <TamaguiProvider config={config}>
         <NavigationContainer>
           <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{ headerShown: true }}
+              name="Details"
+              component={DetailsScreen}
+              options={({ route }) => ({
+                title: 'Product Details',
+              })}
             />
           </Stack.Navigator>
         </NavigationContainer>

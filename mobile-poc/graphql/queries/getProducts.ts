@@ -1,8 +1,8 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 export const GET_PRODUCTS = gql`
-  query GetProducts {
-    products(first: 10) {
+  query GetProducts($first: Int!) {
+    products(first: $first) {
       edges {
         node {
           id
@@ -26,4 +26,4 @@ export const GET_PRODUCTS = gql`
       }
     }
   }
-`;
+`

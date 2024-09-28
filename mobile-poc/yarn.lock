@@ -3034,6 +3034,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tamagui/font-inter@npm:^1.112.3":
+  version: 1.112.3
+  resolution: "@tamagui/font-inter@npm:1.112.3"
+  dependencies:
+    "@tamagui/core": 1.112.3
+  checksum: a11aaf4324ab260088137ff1669bdeef5fb9fc37592f39e59e0c27c767853d6fb4439e50852c0ae3a9e3a48e8458216e22edaa1c6e59d2a4dc7872a175e4f1d4
+  languageName: node
+  linkType: hard
+
 "@tamagui/font-size@npm:1.112.3":
   version: 1.112.3
   resolution: "@tamagui/font-size@npm:1.112.3"
@@ -5258,6 +5267,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"core-js@npm:^1.0.0":
+  version: 1.2.7
+  resolution: "core-js@npm:1.2.7"
+  checksum: 0b76371bfa98708351cde580f9287e2360d2209920e738ae950ae74ad08639a2e063541020bf666c28778956fc356ed9fe56d962129c88a87a6a4a0612526c75
+  languageName: node
+  linkType: hard
+
 "core-util-is@npm:~1.0.0":
   version: 1.0.3
   resolution: "core-util-is@npm:1.0.3"
@@ -5734,7 +5750,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"encoding@npm:^0.1.13":
+"encoding@npm:^0.1.11, encoding@npm:^0.1.13":
   version: 0.1.13
   resolution: "encoding@npm:0.1.13"
   dependencies:
@@ -6321,6 +6337,21 @@ __metadata:
   version: 1.0.2
   resolution: "fbjs-css-vars@npm:1.0.2"
   checksum: 72baf6d22c45b75109118b4daecb6c8016d4c83c8c0f23f683f22e9d7c21f32fff6201d288df46eb561e3c7d4bb4489b8ad140b7f56444c453ba407e8bd28511
+  languageName: node
+  linkType: hard
+
+"fbjs@npm:^0.8.4":
+  version: 0.8.18
+  resolution: "fbjs@npm:0.8.18"
+  dependencies:
+    core-js: ^1.0.0
+    isomorphic-fetch: ^2.1.1
+    loose-envify: ^1.0.0
+    object-assign: ^4.1.0
+    promise: ^7.1.1
+    setimmediate: ^1.0.5
+    ua-parser-js: ^0.7.30
+  checksum: 668731b946a765908c9cbe51d5160f973abb78004b3d122587c3e930e3e1ddcc0ce2b17f2a8637dc9d733e149aa580f8d3035a35cc2d3bc78b78f1b19aab90e2
   languageName: node
   linkType: hard
 
@@ -7418,7 +7449,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-stream@npm:^1.1.0":
+"is-stream@npm:^1.0.1, is-stream@npm:^1.1.0":
   version: 1.1.0
   resolution: "is-stream@npm:1.1.0"
   checksum: 063c6bec9d5647aa6d42108d4c59723d2bd4ae42135a2d4db6eadbd49b7ea05b750fd69d279e5c7c45cf9da753ad2c00d8978be354d65aa9f6bb434969c6a2ae
@@ -7532,6 +7563,16 @@ __metadata:
   version: 3.0.1
   resolution: "isobject@npm:3.0.1"
   checksum: db85c4c970ce30693676487cca0e61da2ca34e8d4967c2e1309143ff910c207133a969f9e4ddb2dc6aba670aabce4e0e307146c310350b298e74a31f7d464703
+  languageName: node
+  linkType: hard
+
+"isomorphic-fetch@npm:^2.1.1":
+  version: 2.2.1
+  resolution: "isomorphic-fetch@npm:2.2.1"
+  dependencies:
+    node-fetch: ^1.0.1
+    whatwg-fetch: ">=0.10.0"
+  checksum: bb5daa7c3785d6742f4379a81e55b549a469503f7c9bf9411b48592e86632cf5e8fe8ea878dba185c0f33eb7c510c23abdeb55aebfdf5d3c70f031ced68c5424
   languageName: node
   linkType: hard
 
@@ -9165,6 +9206,7 @@ __metadata:
     "@react-navigation/native-stack": ^6.11.0
     "@shopify/storefront-api-client": ^1.0.2
     "@tamagui/core": ^1.112.3
+    "@tamagui/font-inter": ^1.112.3
     "@tamagui/shorthands": ^1.112.3
     "@tamagui/themes": ^1.112.3
     "@types/jest": ^29.5.12
@@ -9188,6 +9230,7 @@ __metadata:
     react-native-reanimated: ~3.10.1
     react-native-safe-area-context: ^4.11.0
     react-native-screens: ^3.34.0
+    react-native-snap-carousel: ^3.9.1
     react-native-web: ~0.19.10
     react-test-renderer: 18.2.0
     tamagui: ^1.112.3
@@ -9284,6 +9327,16 @@ __metadata:
   dependencies:
     minimatch: ^3.0.2
   checksum: 29de9560e52cdac8d3f794d38d782f6799e13d4d11aaf96d3da8c28458e1c5e33bb5f8edfb42dc34172ec5516c50c5b8850c9e1526542616757a969267263328
+  languageName: node
+  linkType: hard
+
+"node-fetch@npm:^1.0.1":
+  version: 1.7.3
+  resolution: "node-fetch@npm:1.7.3"
+  dependencies:
+    encoding: ^0.1.11
+    is-stream: ^1.0.1
+  checksum: 3bb0528c05d541316ebe52770d71ee25a6dce334df4231fd55df41a644143e07f068637488c18a5b0c43f05041dbd3346752f9e19b50df50569a802484544d5b
   languageName: node
   linkType: hard
 
@@ -9978,7 +10031,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.1, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -10092,6 +10145,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-addons-shallow-compare@npm:15.6.2":
+  version: 15.6.2
+  resolution: "react-addons-shallow-compare@npm:15.6.2"
+  dependencies:
+    fbjs: ^0.8.4
+    object-assign: ^4.1.0
+  checksum: cfe94358c6103f8434b91969a2a1876d3e76df227f0be9bf58c11a1bdec01500475eb09ca7ddd9d98519a14c18f91fbd11127adfdd092c4f3c5b234b638c4802
+  languageName: node
+  linkType: hard
+
 "react-devtools-core@npm:^5.0.0":
   version: 5.3.1
   resolution: "react-devtools-core@npm:5.3.1"
@@ -10200,6 +10263,19 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 28c1f6e556c318ffcbd79d153b9612cc8a0b8d8b70f909d3cde2fd6d0586a7c151a449e57400d8996f4ee6c3b5140c5c4f643a427e974f6dc573b2bcd8eb7356
+  languageName: node
+  linkType: hard
+
+"react-native-snap-carousel@npm:^3.9.1":
+  version: 3.9.1
+  resolution: "react-native-snap-carousel@npm:3.9.1"
+  dependencies:
+    prop-types: ^15.6.1
+    react-addons-shallow-compare: 15.6.2
+  peerDependencies:
+    react: ">=15.0.0"
+    react-native: "*"
+  checksum: e71f6887ba8e86b4aea6d6a88c304135a7acbb5ef9173b78018fc0e6d9965da9ec1d7c794db31282dc85892c6ca89f398d07145ab3e7d1e28cf12a09c247bb9d
   languageName: node
   linkType: hard
 
@@ -11958,6 +12034,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ua-parser-js@npm:^0.7.30":
+  version: 0.7.39
+  resolution: "ua-parser-js@npm:0.7.39"
+  bin:
+    ua-parser-js: script/cli.js
+  checksum: 3488852961485b80b65a8dbc978098cdf1c51bb7765262698ee1a29304786f667272182e9cee15433e7792981376b1ca59ca77e126fee0b41b104085f4be9a3c
+  languageName: node
+  linkType: hard
+
 "ua-parser-js@npm:^1.0.35":
   version: 1.0.39
   resolution: "ua-parser-js@npm:1.0.39"
@@ -12303,7 +12388,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"whatwg-fetch@npm:^3.0.0":
+"whatwg-fetch@npm:>=0.10.0, whatwg-fetch@npm:^3.0.0":
   version: 3.6.20
   resolution: "whatwg-fetch@npm:3.6.20"
   checksum: c58851ea2c4efe5c2235f13450f426824cf0253c1d45da28f45900290ae602a20aff2ab43346f16ec58917d5562e159cd691efa368354b2e82918c2146a519c5
