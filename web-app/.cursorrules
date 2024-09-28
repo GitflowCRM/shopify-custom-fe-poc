@@ -1,0 +1,74 @@
+lets work on this POC project 
+
+
+I want to create a next js application with shadcn ui
+it should act as a custom front end application which uses shopify store front api with GQL
+we will start with a POC , have a home screen with standard content and also list down all products 
+
+
+# Tech Stack
+- Next.js
+- Tailwind CSS
+- Shadcn UI
+- Shopify Storefront API
+- use shopify graphql client - eg : 
+    import {createStorefrontApiClient} from '@shopify/storefront-api-client';
+
+
+
+##RENDERING
+try to push max items server side , use route handlers 
+
+
+# Features
+
+    Home Screen 
+    - Standard Content
+    - List of Products
+    - List of Collections
+
+
+
+
+
+FOLDERS STRUCTURE
+
+
+Docs :
+Storefront API :
+https://shopify.dev/docs/api/storefront
+
+
+WEB-APP
+├── .next
+├── .vscode
+├── app
+│   ├── api
+│   │   └── graphql
+│   │       └── route.ts
+│   ├── products
+│   │   └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components
+│   ├── ui
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   └── input.tsx
+│   ├── Header.tsx
+│   ├── Footer.tsx
+│   └── ProductList.tsx
+├── lib
+│   ├── shopify.ts
+│   └── utils.ts
+├── public
+│   └── images
+├── styles
+│   └── globals.css
+├── .env.local
+├── next.config.js
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+└── tsconfig.json
